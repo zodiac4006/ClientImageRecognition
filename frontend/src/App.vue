@@ -31,24 +31,25 @@
     display: block;
     height: 100%;
     margin: 0px;
+    font-family: "Open Sans", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
+    font-size: 13px;
   }
 
   .el-header,
   .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
+    background-color: #5fa2dd;
+    height: 44px !important;
   }
 
   .el-main {
     height: 100%;
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
     margin: 0px;
     padding: 0px;
     display: flex;
+    background: linear-gradient(90deg,rgba(206,214,224,.32) 1px,transparent 0), linear-gradient(rgba(206,214,224,.32) 1px,transparent 0);
+    background-size: 15px 15px;
+    background-position: 11px 15px;
+    background-color: #fef9f3;
   }
 
   body>.el-container {
