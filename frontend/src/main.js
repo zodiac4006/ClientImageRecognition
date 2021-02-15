@@ -6,6 +6,7 @@ import Element from 'element-ui'
 import Icon from 'vue-awesome/components/Icon'
 import 'vue-awesome/icons'
 import 'element-ui/lib/theme-chalk/index.css';
+import $ from 'jquery'
 
 Vue.config.productionTip = false
 Vue.use(Element)
