@@ -100,7 +100,7 @@
   #main {
     overflow: auto;
     height: 100%;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
   }
 
@@ -110,7 +110,7 @@
     min-width: 650px;
     float: left;
     text-align: center;
-    padding-right: 20px;
+    padding: 20px;
   }
 
   #main .ctrl-content .el-image__inner {
@@ -122,6 +122,7 @@
     height: 100%;
     width: 320px;
     min-width: 320px;
+    padding: 20px 20px 20px 0px;
   }
 
   #main .info-content .el-image__inner {
