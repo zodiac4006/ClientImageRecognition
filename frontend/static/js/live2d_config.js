@@ -4,7 +4,7 @@ L2Dwidget.init({
     "scale": 1
   },
   "display": {
-    superSample: 1.7, //大小
+    superSample: 1.6, //大小
     "position": "right",
     "width": 110,
     "height": 210,
