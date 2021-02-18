@@ -76,7 +76,7 @@
           }
         };
 
-        this.$axios.post('http://127.0.0.1:4707/upload', formData, configs).then(function(res) {
+        this.$axios.post(process.env.service_ip + 'upload', formData, configs).then(function(res) {
           var nfilepath = '/static/upload/' + res.data.nfilename;
           var filepath = '/static/upload/' + res.data.filename;
 
