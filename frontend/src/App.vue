@@ -25,16 +25,7 @@
   }
 </script>
 
-<style>
-  html,
-  body {
-    display: block;
-    height: 100%;
-    margin: 0px;
-    font-family: "Open Sans", "Helvetica Neue", helvetica, arial, verdana, sans-serif;
-    font-size: 13px;
-  }
-
+<style scoped>
   .el-header,
   .el-footer {
     background-color: #5fa2dd;
@@ -42,10 +33,10 @@
   }
 
   .el-main {
-    height: 100% !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    display: flex !important;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex ;
     background: linear-gradient(90deg,rgba(206,214,224,.32) 1px,transparent 0), linear-gradient(rgba(206,214,224,.32) 1px,transparent 0);
     background-size: 15px 15px;
     background-position: 11px 15px;
