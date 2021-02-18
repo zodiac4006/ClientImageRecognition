@@ -42,9 +42,9 @@
   }
 
   .el-main {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
+    height: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
     display: flex !important;
     background: linear-gradient(90deg,rgba(206,214,224,.32) 1px,transparent 0), linear-gradient(rgba(206,214,224,.32) 1px,transparent 0);
     background-size: 15px 15px;
