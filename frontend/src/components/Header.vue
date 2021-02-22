@@ -1,7 +1,7 @@
 <template>
   <div id='header'>
     <v-icon name="camera"/>
-    <span>创新实验室--人脸识别POC平台</span>
+    <span>创新实验室--图像识别POC平台</span>
   </div>
 </template>
 
