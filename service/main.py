@@ -5,8 +5,6 @@ from flask import jsonify
 from PIL import Image
 
 from model.efficientdet.model import EfficientdetModel
-# from model.IMG2POS.model import Img2posModel
-# from model.YOLO3.model import YOLO3Model
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources=r'/*')
@@ -15,8 +13,6 @@ app.config['UPLOAD_FOLDER'] = '/usr/local/webserver/nginx/html/static/upload'
 
 # 模型加载
 efficientdetModel = EfficientdetModel(score_thres=0.17)
-# img2posModel = Img2posModel(score_thres=0.35)
-# yolo3Model = YOLO3Model(score_thres=0.5)
 
 @app.route('/upload', methods = ['GET', 'POST'])
 def upload():
@@ -28,8 +24,6 @@ def upload():
 
       ### 调用
       num, cost = efficientdetModel.recognition(image_f)
-      # num, cost = img2posModel.recognition(image_f)
-      # num, cost = yolo3Model.recognition(image_f)
 
       im = Image.open(image_f)  # 返回一个Image对象
 
