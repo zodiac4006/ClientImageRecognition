@@ -1,15 +1,22 @@
 from flask import Flask, render_template, request
-from werkzeug.utils import secure_filename
 import os
 from flask_cors import *
 from flask import jsonify
-import huifu as hf
 from PIL import Image
+
+from model.efficientdet.model import EfficientdetModel
+# from model.IMG2POS.model import Img2posModel
+# from model.YOLO3.model import YOLO3Model
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources=r'/*')
-app.config['UPLOAD_FOLDER'] = '/Users/linruihan/Documents/HBuilderProjects/ClientImageRecognition/frontend/static/upload'
-app.config['MODEL_FOLDER'] = '/Users/linruihan/Documents/HBuilderProjects/ClientImageRecognition/service/model'
+# app.config['UPLOAD_FOLDER'] = '/Users/linruihan/Documents/HBuilderProjects/ClientImageRecognition/frontend/static/upload'
+app.config['UPLOAD_FOLDER'] = '/usr/local/webserver/nginx/html/static/upload'
+
+# 模型加载
+efficientdetModel = EfficientdetModel(score_thres=0.17)
+# img2posModel = Img2posModel(score_thres=0.35)
+# yolo3Model = YOLO3Model(score_thres=0.5)
 
 @app.route('/upload', methods = ['GET', 'POST'])
 def upload():
@@ -17,11 +24,12 @@ def upload():
       f = request.files['image']
       filename = str(abs(hash(f.filename)))
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      configure_f = os.path.join(app.config['MODEL_FOLDER'], 'yolov3-spp.cfg')
-      weight_f = os.path.join(app.config['MODEL_FOLDER'], 'yolov3-spp.weights')
-      classes_f = os.path.join(app.config['MODEL_FOLDER'], 'coco.names')
       image_f = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-      num, cost = hf.recognition(configure_f, weight_f, classes_f, image_f)
+
+      ### 调用
+      num, cost = efficientdetModel.recognition(image_f)
+      # num, cost = img2posModel.recognition(image_f)
+      # num, cost = yolo3Model.recognition(image_f)
 
       im = Image.open(image_f)  # 返回一个Image对象
 
@@ -29,7 +37,7 @@ def upload():
                          "num": num,
                          "cost": cost,
                          "filename": filename,
-                         "nfilename": filename + '.res.jpg',
+                         "nfilename": filename + '.eff.jpg',
                          "size": str(im.size[0]) + '*' + str(im.size[1]),
                          "type": im.format})
       response.headers['Access-Control-Allow-Origin'] = '*'
