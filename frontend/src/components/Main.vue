@@ -76,17 +76,29 @@
           }
         };
 
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+          url = window.createObjectURL(file.raw) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+          url = window.URL.createObjectURL(file.raw) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+          url = window.webkitURL.createObjectURL(file.raw) ;
+        }
+        this.$data.oimage = url;
+        // this.$data.rimage = url;
+
         this.$axios.post(process.env.service_ip + 'upload', formData, configs).then(function(res) {
           var nfilepath = '/static/upload/' + res.data.nfilename;
-          var filepath = '/static/upload/' + res.data.filename;
+          // var filepath = '/static/upload/' + res.data.filename;
 
-          this.$data.oimage = filepath;
+          // this.$data.oimage = window.createObjectURL(file.raw);
           this.$data.rimage = nfilepath;
 
           this.$data.num = res.data.num;
           this.$data.cost = res.data.cost;
           this.$data.size = res.data.size;
           this.$data.type = res.data.type;
+
         }.bind(this)).catch(function(err) {
           console.log(err);
           this.$data.loading = false;
