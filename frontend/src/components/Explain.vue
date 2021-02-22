@@ -2,7 +2,7 @@
   <div id='explain'>
     <h2>系统说明</h2>
     <hr />
-    <p>创新实验室——人脸识别POC平台应用于针对图像文件中人员数量信息进行识别。用户可通过点击<span class='highlight'>&nbsp;Browse...&nbsp;</span>按钮进行体验。为保证识别效果，建议使用<span
+    <p>创新实验室——人脸识别POC平台应用于针对图像文件中人员数量信息进行识别。用户可通过点击<span class='highlight'>&nbsp;上传照片&nbsp;</span>按钮进行体验。为保证识别效果，建议使用<span
         class='highlight'>高清晰度正面照片</span>，并尽量<span class='highlight'>避免面部遮挡</span>。</p>
     <p>目前平台尚处于实验阶段，如遇到各类问题或发现任何不足，请通过下方联系方式与我们联系。感谢您的支持与陪伴~</p>
     <img :src='dce' />
