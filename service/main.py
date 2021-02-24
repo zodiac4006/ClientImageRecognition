@@ -3,6 +3,7 @@ import os
 from flask_cors import *
 from flask import jsonify
 from PIL import Image
+import time
 
 from model.efficientdet.model import EfficientdetModel
 
@@ -18,7 +19,7 @@ efficientdetModel = EfficientdetModel(score_thres=0.17)
 def upload():
    if request.method == 'POST':
       f = request.files['image']
-      filename = str(abs(hash(f.filename)))
+      filename = str(abs(hash(time.time())))
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       image_f = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
