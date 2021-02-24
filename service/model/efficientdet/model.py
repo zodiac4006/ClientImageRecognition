@@ -38,8 +38,8 @@ class EfficientdetModel():
         for i in range(len(nms_b)):
             if nms_s[i] > self.score_thres:
                 bboxes.append([nms_b[i][1], nms_b[i][0], nms_b[i][3], nms_b[i][2]])
-        # scores = scores.cpu().numpy().astype('float32')[0]
-        # utils.draw_box(img, bboxes, scores, image_path + '.eff.jpg')
+        scores = scores.cpu().numpy().astype('float32')[0]
+        utils.draw_box(img, bboxes, scores, image_path + '.eff.jpg')
 
         end_time = time.time()
         time_cost = '%.2f' % ((end_time - start_time) * 1000)
