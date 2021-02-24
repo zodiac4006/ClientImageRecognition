@@ -2,7 +2,7 @@
   <div id="main" v-loading="loading" element-loading-text="文件上传中">
     <div class="ctrl-content">
       <div>
-        <el-image :src="rimage" v-on:load="rimage_load"></el-image>
+        <el-image :src="rimage" ref="rimage" v-on:load="rimage_load" v-on:error="rimage_reload"></el-image>
       </div>
       <div style='padding-top: 10px;'>
         <el-upload ref="upload" action="https://jsonplaceholder.typicode.com/posts/" :auto-upload="false" :on-change="upload"
@@ -58,6 +58,10 @@
         }
         this.$data.loading = false;
       },
+      rimage_reload: function(e) {
+        console.log('reload')
+        e.target.src = e.target.currentSrc;
+      },
       // 图象加载
       oimage_load: function(e) {
         e.target.style = 'width: 310px; height: auto;';
@@ -85,15 +89,11 @@
           url = window.webkitURL.createObjectURL(file.raw) ;
         }
         this.$data.oimage = url;
-        // this.$data.rimage = url;
 
         this.$axios.post(process.env.service_ip + 'upload', formData, configs).then(function(res) {
           var nfilepath = '/static/upload/' + res.data.nfilename;
-          // var filepath = '/static/upload/' + res.data.filename;
 
-          // this.$data.oimage = window.createObjectURL(file.raw);
           this.$data.rimage = nfilepath;
-
           this.$data.num = res.data.num;
           this.$data.cost = res.data.cost;
           this.$data.size = res.data.size;
