@@ -19,7 +19,7 @@ class EfficientdetModel():
         start_time = time.time()
         img = Image.open(image_path)
         imgs = [np.array(img)]
-        imgs = tf.convert_to_tensor(imgs, dtype=tf.uint8)
+        imgs = tf.convert_to_tensor(np.asarray(imgs), dtype=tf.uint8)
         boxes, scores, classes, valid_len = self.export_model.f(imgs)
 
         # people_nms
